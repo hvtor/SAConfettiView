@@ -105,7 +105,8 @@ public class SAConfettiView: UIView {
             return nil
         }
         let confetti = CAEmitterCell()
-        confetti.birthRate = 6.0 * intensity
+        // Vary each color with a slightly different birth rate so they don't come in waves
+        confetti.birthRate = (6.0 + Float(arc4random()) / Float(UINT32_MAX)) * intensity
         confetti.lifetime = 14.0 * intensity
         confetti.lifetimeRange = 0
         confetti.color = color.cgColor
