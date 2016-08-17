@@ -119,6 +119,9 @@ public class SAConfettiView: UIView {
         confetti.scaleRange = CGFloat(intensity)
         confetti.scaleSpeed = CGFloat(-0.1 * intensity)
         confetti.contents = image.cgImage
+        if let safeType = type, case .Image(_) = safeType {
+            confetti.contentsScale = UIScreen.main.scale
+        }
         return confetti
     }
 }
