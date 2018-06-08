@@ -46,7 +46,7 @@ open class SAConfettiView: UIView {
         active = false
     }
 
-    open func startConfetti() {
+    @objc open func startConfetti() {
         emitter = CAEmitterLayer()
 
         emitter.emitterPosition = CGPoint(x: frame.size.width / 2.0, y: 0)
@@ -55,7 +55,7 @@ open class SAConfettiView: UIView {
 
         var cells = [CAEmitterCell]()
         for color in colors {
-            cells.append(confettiWithColor(color: color))
+            cells.append(confettiWithColor(color))
         }
 
         emitter.emitterCells = cells
@@ -63,7 +63,7 @@ open class SAConfettiView: UIView {
         active = true
     }
 
-    open func stopConfetti() {
+    @objc open func stopConfetti() {
         emitter?.birthRate = 0
         active = false
     }
@@ -104,8 +104,8 @@ open class SAConfettiView: UIView {
         confetti.color = color.cgColor
         confetti.velocity = CGFloat(350.0 * intensity)
         confetti.velocityRange = CGFloat(80.0 * intensity)
-        confetti.emissionLongitude = CGFloat(M_PI)
-        confetti.emissionRange = CGFloat(M_PI_4)
+        confetti.emissionLongitude = CGFloat(Double.pi)
+        confetti.emissionRange = CGFloat(Double.pi)
         confetti.spin = CGFloat(3.5 * intensity)
         confetti.spinRange = CGFloat(4.0 * intensity)
         confetti.scaleRange = CGFloat(intensity)
@@ -114,7 +114,7 @@ open class SAConfettiView: UIView {
         return confetti
     }
 
-    open func isActive() -> Bool {
+    @objc open func isActive() -> Bool {
     		return self.active
     }
 }
